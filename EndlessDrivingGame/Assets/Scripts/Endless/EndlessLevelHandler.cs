@@ -37,7 +37,7 @@ public class EndlessLevelHandler : MonoBehaviour
       {
          GameObject randomSection = GetRandomSectionFromPool();
          
-         randomSection.transform.position = new Vector3(sectionsPool[i].transform.position.x, 0, i * SectionLenght);
+         randomSection.transform.position = new Vector3(sectionsPool[i].transform.position.x, -10, i * SectionLenght);
          randomSection.SetActive(true);
          
          sections[i] = randomSection;
