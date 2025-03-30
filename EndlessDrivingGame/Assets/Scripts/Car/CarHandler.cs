@@ -1,10 +1,12 @@
-using System;
+using System.Collections;
 using UnityEngine;
 
 public class CarHandler : MonoBehaviour
 {
     [SerializeField] private Rigidbody rb;
     [SerializeField] private Transform gameModel;
+
+    [SerializeField] private ExplodeHandler explodeHandler;
     
     float accelerationmultiplier = 3f;
     float brakeMultiplier = 15f;
@@ -15,13 +17,26 @@ public class CarHandler : MonoBehaviour
     
     Vector2 input = Vector2.zero;
 
+    bool isExploded = false;
+
     private void Update()
     {
+        if(isExploded)
+            return;
         gameModel.transform.rotation = Quaternion.Euler(0, rb.linearVelocity.x * 5, 0);
     }
 
     private void FixedUpdate()
     {
+        if(isExploded)
+        {
+            rb.linearDamping = rb.linearVelocity.z * 0.1f;
+            rb.linearDamping = Mathf.Clamp(rb.linearDamping, 1.5f, 10);
+
+            rb.MovePosition(Vector3.Lerp(transform.position, new Vector3(0,0, transform.position.z), Time.deltaTime * .5f));
+
+            return;
+        }
         if (input.y > 0)
             Accelerate();
         else
@@ -78,5 +93,35 @@ public class CarHandler : MonoBehaviour
     {
         inputVector.Normalize();
         input = inputVector;
+    }
+
+    IEnumerator SlowDownTimeCO(){
+        while(Time.timeScale > 0.2f){
+            Time.timeScale -= Time.deltaTime *2;
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(.5f);
+
+        while(Time.timeScale <= 1f){
+            Time.timeScale += Time.deltaTime;
+
+            yield return null;
+        }
+
+        Time.timeScale = 1.0f;
+    }
+
+    //events 
+    void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log($"HIt {collision.collider.name}");
+
+        Vector3 velocity = rb.linearVelocity;
+        explodeHandler.Explode(velocity * 45);
+
+        isExploded = true;
+        
+        StartCoroutine(SlowDownTimeCO());
     }
 }
