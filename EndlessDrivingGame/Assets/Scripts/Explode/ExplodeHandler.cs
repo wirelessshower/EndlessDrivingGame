@@ -10,11 +10,7 @@ public class ExplodeHandler : MonoBehaviour {
     {
         rigidbodies  = model.GetComponentsInChildren<Rigidbody>(true);
     }
-
-    void Start()
-    {
-        //Explode(Vector3.forward);
-    }
+    
 
     public void Explode(Vector3 externalForce){
         originalObjec.SetActive(false);
@@ -29,6 +25,8 @@ public class ExplodeHandler : MonoBehaviour {
             rb.interpolation = RigidbodyInterpolation.Interpolate;
             rb.AddForce(Vector3.up * 200 + externalForce, ForceMode.Force);
             rb.AddTorque(Random.insideUnitSphere * 0.5f, ForceMode.Impulse);
+
+            rb.gameObject.tag = "CarPart";
         }
     }
 }

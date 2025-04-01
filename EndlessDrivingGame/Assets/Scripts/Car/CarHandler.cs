@@ -18,7 +18,11 @@ public class CarHandler : MonoBehaviour
     Vector2 input = Vector2.zero;
 
     bool isExploded = false;
+    bool isPlayer;
 
+    private void Start() {
+        isPlayer = CompareTag("Player");
+    }
     private void Update()
     {
         if(isExploded)
@@ -95,6 +99,10 @@ public class CarHandler : MonoBehaviour
         input = inputVector;
     }
 
+    public void SetMaxSpeed(float newMaxSpeed){
+        maxForwardVelocity = newMaxSpeed;
+    }
+
     IEnumerator SlowDownTimeCO(){
         while(Time.timeScale > 0.2f){
             Time.timeScale -= Time.deltaTime *2;
@@ -115,8 +123,16 @@ public class CarHandler : MonoBehaviour
     //events 
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log($"HIt {collision.collider.name}");
+        if(!isPlayer){
+            if(collision.transform.root.CompareTag("Untagged"))
+                return;
 
+            if(collision.transform.root.CompareTag("CarAI"))
+                return;
+
+            Time.timeScale = 1.0f;
+        }
+        
         Vector3 velocity = rb.linearVelocity;
         explodeHandler.Explode(velocity * 45);
 

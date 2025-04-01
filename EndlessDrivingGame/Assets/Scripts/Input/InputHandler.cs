@@ -4,9 +4,17 @@ using UnityEngine.SceneManagement;
 
 public class InputHandler : MonoBehaviour
 {
+
    [SerializeField] CarHandler carHandler;
 
-   private void Update()
+    void Awake()
+    {
+        if(!CompareTag("Player")){
+            Destroy(this);
+            return;
+        }
+    }
+    private void Update()
    {
       Vector2 input = Vector2.zero;
       
@@ -18,6 +26,7 @@ public class InputHandler : MonoBehaviour
       if (Input.GetKeyDown(KeyCode.R))
       {
          SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+         Time.timeScale = 1.0f;
       }
    }
 }
