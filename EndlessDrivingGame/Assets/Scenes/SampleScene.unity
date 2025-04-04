@@ -552,6 +552,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Car Base PF
       objectReference: {fileID: 0}
+    - target: {fileID: 8435722256051507223, guid: ffbfccc6a99811b4bb58cacada96846b, type: 3}
+      propertyPath: DopplerLevel
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
