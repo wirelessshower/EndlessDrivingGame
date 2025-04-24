@@ -597,6 +597,7 @@ GameObject:
   - component: {fileID: 7774416443236103303}
   - component: {fileID: 4848566282341508999}
   - component: {fileID: 1474735031644730717}
+  - component: {fileID: 523373292632051513}
   m_Layer: 8
   m_Name: Car_Wagon Base PF
   m_TagString: Player
@@ -735,6 +736,27 @@ MonoBehaviour:
     m_Bits: 256
   meshCollider: {fileID: 6424478338244892623}
   honkHornAS: {fileID: 8435722256051507223}
+--- !u!65 &523373292632051513
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8396640927574757415}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.45008093, y: 0.33056086, z: 0.7834741}
+  m_Center: {x: 0.000088483095, y: 0.25894293, z: 0.0012978315}
 --- !u!1001 &6749084712759327478
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -14,6 +15,9 @@ public class CarHandler : MonoBehaviour
 
     [SerializeField] AudioSource carSkidAS;
     [SerializeField] AudioSource carCrashAS;
+
+    //Events
+    public event Action CarCrash;
 
     
     float accelerationmultiplier = 3f;
@@ -176,9 +180,15 @@ public class CarHandler : MonoBehaviour
 
             if(collision.transform.root.CompareTag("CarAI"))
                 return;
+            
+            if(collision.transform.root.CompareTag("Coin"))
+                return;
 
         }
+
         
+        
+
         Vector3 velocity = rb.linearVelocity;
         explodeHandler.Explode(velocity * 45);
 
@@ -191,7 +201,11 @@ public class CarHandler : MonoBehaviour
         carCrashAS.pitch = Mathf.Clamp(carCrashAS.pitch, 0.3f, 1.0f);
 
         carCrashAS.Play();
+        CarCrash?.Invoke();
         
         StartCoroutine(SlowDownTimeCO());
+
     }
+
+   
 }

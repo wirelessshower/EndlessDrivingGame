@@ -8,12 +8,9 @@ public class Player : MonoBehaviour
     
 
     void Start()
-    {
-        for(int i = 0; i < carsPrefubs.Length; i++){
-            carsPrefubs[i].SetActive(false);
-        }
-
-        currentCarIndex = PlayerPrefs.GetInt("CurrentCar", 0);
-        carsPrefubs[currentCarIndex].SetActive(true);
+    {   
+        currentCarIndex = PlayerPrefs.GetInt("CurrentCar");
+        Instantiate(carsPrefubs[currentCarIndex], Vector3.zero, Quaternion.identity);
+        
     }
 }

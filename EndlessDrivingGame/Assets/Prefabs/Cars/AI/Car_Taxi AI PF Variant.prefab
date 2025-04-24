@@ -48,6 +48,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8186336843487834625, guid: f00ce98ede479634eb8625c3b298e616, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8396640927574757415, guid: f00ce98ede479634eb8625c3b298e616, type: 3}
       propertyPath: m_Name
       value: Car_Taxi AI PF Variant

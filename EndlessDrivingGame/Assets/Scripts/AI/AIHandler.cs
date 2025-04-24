@@ -11,7 +11,7 @@ public class AIHandler : MonoBehaviour
     [SerializeField] private AudioSource honkHornAS;
 
     private const float ObstacleCheckInterval = 0.2f;
-    private const float HornDistanceThreshold = 10f;
+    private const float HornDistanceThreshold = 15f;
     private const float BoxCastHalfSize = 0.25f;
     private const float BoxCastDistance = 3f;
 
@@ -66,7 +66,7 @@ public class AIHandler : MonoBehaviour
 
     private void HandleHorn()
     {
-        if (isCarAhead && carAheadDistance < HornDistanceThreshold && !honkHornAS.isPlaying)
+        if (isCarAhead && carAheadDistance < HornDistanceThreshold && !honkHornAS.isPlaying && !raycastHits[0].collider.gameObject.CompareTag("Coin"))
         {
             honkHornAS.pitch = Random.Range(0.5f, 1.1f);
             honkHornAS.Play();
@@ -95,6 +95,8 @@ public class AIHandler : MonoBehaviour
             carAheadDistance = (transform.position - raycastHits[0].point).magnitude;
             return true;
         }
+        
+            
         carAheadDistance = float.MaxValue; // Reset distance when no car is ahead
         return false;
     }
