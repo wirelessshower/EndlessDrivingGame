@@ -15,7 +15,7 @@ public class MoneyManager : MonoBehaviour
 
     public void UpdateMoney()
     {
-        currentMoney = PlayerPrefs.GetInt("Money", 10000);
+        currentMoney = PlayerPrefs.GetInt("Money");
         MoneyText.text = currentMoney.ToString();
     }
     

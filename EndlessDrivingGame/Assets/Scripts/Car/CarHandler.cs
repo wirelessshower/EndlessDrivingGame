@@ -185,8 +185,6 @@ public class CarHandler : MonoBehaviour
                 return;
 
         }
-
-        
         
 
         Vector3 velocity = rb.linearVelocity;
