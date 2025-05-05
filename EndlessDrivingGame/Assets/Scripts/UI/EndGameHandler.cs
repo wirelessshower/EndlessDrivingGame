@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
+using YG;
 public class EndGameHandler : MonoBehaviour
 {
     [SerializeField] private Button home;
@@ -27,16 +27,22 @@ public class EndGameHandler : MonoBehaviour
     }    
 
     private void OpenMainManue(){
+        if(YG2.isTimerAdvCompleted)
+            YG2.InterstitialAdvShow();
         SceneManager.LoadScene("Manu");
     }
 
     private void ResetartScene()
     {
+        if(YG2.isTimerAdvCompleted)
+            YG2.InterstitialAdvShow();
         SceneManager.LoadScene("MainLevel");
     }
 
     private void OpenShop()
     {
+        if(YG2.isTimerAdvCompleted)
+            YG2.InterstitialAdvShow();
         SceneManager.LoadScene("Store");
     }
 

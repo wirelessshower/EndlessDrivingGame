@@ -1,8 +1,9 @@
 using UnityEngine;
-
+using YG;
+using PlayerPrefs = RedefineYG.PlayerPrefs;
 public class CoinHandler : MonoBehaviour
-{  
-
+{
+   
     void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("Player")){

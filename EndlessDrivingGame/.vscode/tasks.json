@@ -1,0 +1,12 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "dotnet",
+			"task": "watch UnityEditor.UI",
+			"file": "D:\\!MyGames\\EndlessDrivingGame\\EndlessDrivingGame\\UnityEditor.UI.csproj",
+			"problemMatcher": [],
+			"label": "dotnet: watch UnityEditor.UI"
+		}
+	]
+}

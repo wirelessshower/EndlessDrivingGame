@@ -1,7 +1,8 @@
 using System;
 using System.Collections;
 using UnityEngine;
-
+using YG;
+using PlayerPrefs = RedefineYG.PlayerPrefs;
 public class CarHandler : MonoBehaviour
 {
     [SerializeField] private Rigidbody rb;
@@ -33,6 +34,7 @@ public class CarHandler : MonoBehaviour
     bool isExploded = false;
     bool isPlayer;
 
+    int maxMoney = 0;
     
         
 
@@ -152,28 +154,13 @@ public class CarHandler : MonoBehaviour
         maxForwardVelocity = newMaxSpeed;
     }
 
-    IEnumerator SlowDownTimeCO(){
-        while(Time.timeScale > 0.2f){
-            Time.timeScale -= Time.deltaTime *2;
-            yield return null;
-        }
-
-        yield return new WaitForSeconds(.5f);
-
-        while(Time.timeScale <= 1f){
-            Time.timeScale += Time.deltaTime;
-
-            yield return null;
-        }
-
-        Time.timeScale = 1.0f;
-    }
+    
 
     //events 
     void OnCollisionEnter(Collision collision)
     {
         if(!isPlayer){
-            Time.timeScale = 1.0f;
+           
             
             if(collision.transform.root.CompareTag("Untagged"))
                 return;
@@ -185,7 +172,13 @@ public class CarHandler : MonoBehaviour
                 return;
 
         }
-        
+
+        PlayerPrefs.Save();
+
+        if(MoneyManager.currentMoney > maxMoney){
+            maxMoney = MoneyManager.currentMoney;
+            YG2.SetLeaderboard("CarCoinsLeaderBoard", maxMoney);
+        }
 
         Vector3 velocity = rb.linearVelocity;
         explodeHandler.Explode(velocity * 45);
@@ -199,9 +192,8 @@ public class CarHandler : MonoBehaviour
         carCrashAS.pitch = Mathf.Clamp(carCrashAS.pitch, 0.3f, 1.0f);
 
         carCrashAS.Play();
-        CarCrash?.Invoke();
+        CarCrash?.Invoke();       
         
-        StartCoroutine(SlowDownTimeCO());
 
     }
 

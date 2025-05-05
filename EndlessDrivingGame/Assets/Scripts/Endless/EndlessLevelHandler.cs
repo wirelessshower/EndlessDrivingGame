@@ -7,9 +7,9 @@ public class EndlessLevelHandler : MonoBehaviour
 {
    [SerializeField] GameObject[] sectionsPrefabs;
    
-   GameObject[] sectionsPool = new GameObject[20];
+   GameObject[] sectionsPool = new GameObject[10];
    
-   GameObject[] sections = new GameObject[10];
+   GameObject[] sections = new GameObject[5];
 
    private Transform playerCarTransform;
    

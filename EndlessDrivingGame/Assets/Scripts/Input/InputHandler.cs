@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using YG;
 
 public class InputHandler : MonoBehaviour
 {
@@ -21,19 +22,17 @@ public class InputHandler : MonoBehaviour
 
     private void Update()
    {
+        Vector2 input = Vector2.zero;       
 
-        Vector2 input = Vector2.zero;
-      
-        input.x = Input.GetAxis("Horizontal");
-        input.y = Input.GetAxis("Vertical");
+        if (YG2.envir.isMobile) {
+            input = new Vector2(steeringInput, accelerationInput);
+        } else { 
+            input.x = Input.GetAxis("Horizontal");
+            input.y = Input.GetAxis("Vertical");
+        }
 
         if (carHandler != null)           
-            carHandler.SetInput(input);
-        //for phones
-        input = new Vector2(steeringInput, accelerationInput);
-        if(carHandler != null){
-            carHandler.SetInput(input);
-        }
+            carHandler.SetInput(input);        
             
     }
     // Эти функции будут вызываться EventTrigger на кнопках

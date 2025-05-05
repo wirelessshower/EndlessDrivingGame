@@ -1,7 +1,8 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-
+using YG;
+using PlayerPrefs = RedefineYG.PlayerPrefs;
 public class ShopButton : MonoBehaviour
 {
     public int carPrice = 100;
@@ -54,7 +55,7 @@ public class ShopButton : MonoBehaviour
 
     void BuyCar()
     {
-        int money = PlayerPrefs.GetInt("Money", 10000);
+        int money = PlayerPrefs.GetInt("Money", 0);
         if(money >= carPrice){
             if(PlayerPrefs.GetInt("CarBought_" + CarIndex, 0) != 1){
                 money -= carPrice;

@@ -1,6 +1,8 @@
 using TMPro;
 using UnityEngine;
+using YG;
 
+using PlayerPrefs = RedefineYG.PlayerPrefs;
 public class MoneyText : MonoBehaviour
 {
     [SerializeField] private TMP_Text m_Text;

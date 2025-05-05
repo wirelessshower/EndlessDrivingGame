@@ -1,13 +1,16 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
+using YG;
+using PlayerPrefs = RedefineYG.PlayerPrefs;
 public class ManuManager : MonoBehaviour
 {
     [SerializeField] Button play;
     [SerializeField] Button store;
     [SerializeField] Button settings;
     [SerializeField] Image carImage;
+    [SerializeField] GameObject settingsImage;
+    [SerializeField] private Button CloseOutBorder;
     [SerializeField] Sprite[] sprites;
 
 
@@ -20,7 +23,8 @@ public class ManuManager : MonoBehaviour
         
 
         play.onClick.AddListener(OpenGame);
-        store.onClick.AddListener(OpenStore);        
+        store.onClick.AddListener(OpenStore); 
+        settings.onClick.AddListener(OpenSettings);
     }
 
     private void OpenStore()
@@ -30,7 +34,8 @@ public class ManuManager : MonoBehaviour
 
     private void OpenSettings()
     {
-        SceneManager.LoadScene("Settings");
+        settingsImage.SetActive(true);
+        CloseOutBorder.gameObject.SetActive(true);
     }
 
     private void OpenGame()

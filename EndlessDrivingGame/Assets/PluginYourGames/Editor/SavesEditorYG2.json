@@ -1,0 +1,37 @@
+{
+    "stringKeys": [],
+    "stringValues": [],
+    "floatKeys": [
+        "MusicVolume"
+    ],
+    "floatValues": [
+        0.30000001192092898
+    ],
+    "intKeys": [
+        "CarBought_0",
+        "Money"
+    ],
+    "intValues": [
+        1,
+        880
+    ],
+    "intExample": 5,
+    "strExample": "Hello!",
+    "boolExample": [
+        false,
+        false,
+        false,
+        false
+    ],
+    "idSave": 33,
+    "money": 10000,
+    "carsBought": [
+        false,
+        false,
+        false,
+        false,
+        false
+    ],
+    "currentCarIndex": 0,
+    "currentLevelMoney": 0
+}

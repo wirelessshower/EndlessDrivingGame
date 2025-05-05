@@ -6,7 +6,7 @@ public class AICarSpawner : MonoBehaviour {
     [SerializeField] GameObject[] carAIPrefabs;
     [SerializeField] LayerMask otherCarsLayerMask;
 
-    GameObject[] carAIPool = new GameObject[20];
+    GameObject[] carAIPool = new GameObject[10];
 
     Transform playerCarTransform;
 

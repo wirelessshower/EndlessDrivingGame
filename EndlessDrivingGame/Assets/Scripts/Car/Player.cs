@@ -1,5 +1,6 @@
 using UnityEngine;
-
+using YG;
+using PlayerPrefs = RedefineYG.PlayerPrefs;
 public class Player : MonoBehaviour
 {
     [SerializeField] GameObject[] carsPrefubs;

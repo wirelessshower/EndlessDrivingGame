@@ -11,7 +11,7 @@ public class CarPartHandler : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        Time.timeScale = 1.0f;
+        
 
         if(!bounceAS.isPlaying){
             bounceAS.pitch = collision.relativeVelocity.magnitude * 0.5f;
